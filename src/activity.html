@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Wonders</title>
+    <meta name="title" content="Weather Wonders">
+    <meta name="description" content="Weather Wonders is weather app made by Athierah">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="new_integrity_value" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- map -->
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+        <img src="assets/weather.png" alt="Weather App Logo" class="logo">
+        <nav class="nav-3d">
+            <ul>
+                <li><a href="index.html">Weather</a></li>
+                <li><a href="maps.html">Maps</a></li>
+                <li><a href="hourlyforecast.html">Hourly Forecast</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="news.html">News</a></li>
+                
+                <div class="user-input">
+                  <!-- <label for="locationInput">Enter Location:</label> -->
+                  <input type="text" id="locationInput" placeholder="Search Weather of Places/City...">
+                  <button id="fetchWeatherBtn1">Search</button>
+                </div>
+            </ul>
+            
+        </nav>
+    </div>
+</header>
+<br>
+<div>
+    <button id="createBtn">Create</button>
+    <button id="readBtn">Read</button>
+    <button id="updateBtn">Update</button>
+    <button id="deleteBtn">Delete</button>
+</div>
+<br>
+<hr>
+<form id="weatherForm">
+    <label for="cityInput">City:</label>
+    <input type="text" id="cityInput" name="cityInput" required>
+
+    <label for="countryInput">Country:</label>
+    <input type="text" id="countryInput" name="countryInput" required>
+
+    <input type="text" id="locationInput" placeholder="Search Weather of Places/City...">
+    <button type="button" id="fetchWeatherBtn">Fetch Weather</button>
+</form>
+<div id="weatherInfo">
+    <section id="content">
+        <!-- Weather content will be dynamically updated here -->
+        <div class="search-result square-section" data-search-result>
+            <ul class="view-list" data-search-list>
+                <li class="view-item">
+                    <div class="weather-info">
+                        <p class="item-title" id="dateTime"></p>
+                        <p class="item-title" id="location"></p>
+                        <p class="item-subtitle" id="locationDetails"></p>
+                        <p class="item-subtitle" id="temperature"></p>
+                        <img src="" alt="Weather Icon" id="weatherIcon">
+                        <p class="item-subtitle" id="windSpeed"></p>
+                        <p class="item-subtitle" id="dewPoint"></p>
+                        <p class="item-subtitle" id="humidity"></p>
+                        <p class="item-subtitle" id="uvIndex"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="activity.js"></script>
+</body>
+</html>
+
+
+

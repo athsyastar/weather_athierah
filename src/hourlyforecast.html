@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Wonders</title>
+    <meta name="title" content="Weather Wonders">
+    <meta name="description" content="Weather Wonders is weather app made by Athierah">
+    <link rel="stylesheet" href="hourlyforecast.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="new_integrity_value" crossorigin="anonymous">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- statistics-->
+    <!-- Include Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+        <img src="assets/weather.png" alt="Weather App Logo" class="logo">
+        <nav class="nav-3d">
+            <ul>
+                <li><a href="index.html">Weather</a></li>
+                <li><a href="maps.html">Maps</a></li>
+                <li><a href="hourlyforecast.html">Hourly Forecast</a></li>
+                <li><a href="activity.html">Activity</a></li>
+                <li><a href="news.html">News</a></li>
+                <div class="user-input">
+                  <!-- <label for="locationInput">Enter Location:</label> -->
+                  <input type="text" id="locationInput" placeholder="Search Weather of Places/City...">
+                  <button id="fetchWeatherBtn">Search</button>
+                </div>
+            </ul>
+            
+        </nav>
+    </div>
+    
+</header>
+<br>
+<div id="home-location-container">
+        <button id="setHomeBtn" onclick="toggleDropdown()">Set Home Location</button>
+        <div id="homeDropdown" class="dropdown-content">
+            <a href="#" onclick="setHomeLocation('Current Location')">Current Location</a>
+            <a href="#" onclick="setHomeLocation('London')">London</a>
+            <!-- Add more locations as needed -->
+        </div>
+    </div>
+
+    <div id="statistics-container">
+
+    <canvas id="hourlyChart" width="800" height="400"></canvas>
+</div>
+<h1>5-Day Forecast</h1>
+    <ul id="forecastList"></ul>
+
+<script src="hourlyforecast.js"></script>
+<!-- Add this inside the head tag -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script> 
+document.addEventListener('DOMContentLoaded', function () {
+    const apiKey = 'e24d599fb5d739efd4f8a45a0bc438e7';
+    const city = 'Beranang';
+    const forecastEndpoint = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(forecastEndpoint)
+        .then(response => response.json())
+        .then(data => {
+            const forecastList = data.list;
+
+            // Select the ul element to append forecast items
+            const forecastListElement = document.getElementById('forecastList');
+
+            // Clear any existing forecast items
+            forecastListElement.innerHTML = '';
+
+            // Loop through the forecast list and create forecast items
+            forecastList.forEach(forecast => {
+                const date = new Date(forecast.dt * 1000);
+                const temperature = forecast.main.temp;
+                const description = forecast.weather[0].description;
+
+                // Create a list item for each forecast
+                const listItem = document.createElement('li');
+                listItem.textContent = `${date.toLocaleDateString('en-US')}: ${description}, ${temperature} °C`;
+
+                // Append the list item to the ul element
+                forecastListElement.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error fetching forecast data:', error));
+});
+</script>
+</body>
+</html>

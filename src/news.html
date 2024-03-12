@@ -1,0 +1,77 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather Wonders</title>
+        <meta name="title" content="Weather Wonders">
+        <meta name="description" content="Weather Wonders is a weather app created by Athierah">
+        <link rel="stylesheet" href="news.css">
+        <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    
+        <!-- Google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+        <!-- Include axios CSS and JS -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-content">
+                <img src="assets/weather.png" alt="Weather App Logo" class="logo">
+                <nav class="nav-3d">
+                    <ul>
+                        <li><a href="index.html">Weather</a></li>
+                        <li><a href="maps.html">Maps</a></li>
+                        <li><a href="hourlyforecast.html">Hourly Forecast</a></li>
+                        <li><a href="activity.html">Activity</a></li>
+                        <li><a href="news.html">News</a></li>
+                        
+                        <div class="user-input">
+                            <input type="text" id="locationInput" placeholder="Search Weather of Places/City...">
+                            <button id="fetchWeatherBtn">Search</button>
+                        </div>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    
+        <!-- News content container -->
+        <div id="news-section">
+            <h2>Latest News</h2>
+            <div id="news-container"></div>
+        </div>
+    
+        <section id="news">
+            <h1>Weather News</h1>
+            
+            <article class="news-article">
+                <img src="assets/thunder.jpg" alt="Weather News Image">
+                <div class="article-content">
+                    <h2>Extreme Weather Event</h2>
+                    <p class="date">March 10, 2024</p>
+                    <p>Severe storms hit various regions, causing widespread flooding and power outages. Experts predict...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+    
+            <article class="news-article">
+                <img src="assets/cloud.jpg" alt="Weather News Image">
+                <div class="article-content">
+                    <h2>New Weather Satellite Launched</h2>
+                    <p class="date">March 8, 2024</p>
+                    <p>A cutting-edge weather satellite was successfully launched into orbit, enhancing our ability to monitor...</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+            </article>
+    
+            <!-- Add more articles as needed -->
+    
+        </section>
+    
+        <script src="news.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,176 @@
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background-color:#bcaec450;
+    overflow: auto;
+    }
+    
+    header { 
+       background-color: #c5bcca;
+       padding: 10px;
+    
+    }
+    .nav-3d {
+       perspective: 1000px;
+       list-style: none;
+       }
+      
+    .header-content {
+        display: flex;
+        align-items: center;
+    }
+    
+    .logo {
+        max-width: 100%;
+        height: auto;
+        width: 50px; /* Adjust the width as needed */
+        height: 50px; /* Adjust the height as needed */
+        margin-right: 10px; /* Adjust the margin between the logo and text */
+    }
+    .nav-3d ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content:space-around;
+        align-items: flex-end;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      transform-style: preserve-3d;
+      transition: color 1.0s; /* Separate the transition properties */
+      font-weight:500;
+    }
+    nav a:hover {
+      color: #d869ae;
+      animation: rotateAnimation 1s forwards; /* Use an animation for the rotation */
+      text-shadow: 2px 2px 4px rgba(168, 124, 166, 0.3); /* Add a shadow effect */
+    }
+    @keyframes rotateAnimation {
+      to {
+          transform: rotateX(360deg);
+      }
+    }
+    .search-bar {
+       display: list-item;
+       margin-top: auto;
+       margin-left: 50px;
+    } 
+    .nav-3d li {
+        margin-right: 10px; /* Adjust the margin between navigation items */
+    }
+    input {
+        padding: 10px;
+        flex: 1;
+        border-radius: 20px;
+        margin-right: 15px;
+        width: 300px;
+    }
+    button {
+      padding: 10px;
+      background-color: #F399D1;
+      width: 100px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-family: 'Times New Roman', Times, serif;
+      border-radius: 20px;
+    }
+    button:hover {
+      background-color: #d869ae
+    } 
+    .header-content {
+      display: flex;
+      align-items: center;
+    }
+    .logo{
+      max-width: 100%;
+      height: auto;
+      width: 7%;
+    }
+    
+    #content {
+      padding: 20px;
+    }
+    /* Add these styles to your existing CSS file or create a new one */
+    
+    .search-result {
+      margin-top: 20px;
+      border-radius: 20px; /* Apply border radius */
+      overflow: hidden; /* Ensure the border radius is applied properly */
+    }
+
+    /* Add these styles to your existing CSS file or create a new one */
+
+#news-section {
+    padding: 0px;
+    background-color: #c5bcca;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 200px;
+    margin-left: 40px;
+}
+
+#news-container {
+    margin-top: 10px;
+    
+}
+
+h2 {
+    color: #ffffff;
+    margin-left: 5%;
+}
+#news-section {
+  padding: 20px;
+  text-align: center;
+}
+
+
+
+.article-content {
+  padding: 15px;
+}
+
+.article-content h2 {
+  color: #333;
+}
+
+.date {
+  color: #777;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #d869ae;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.read-more:hover {
+  background-color: #c1569e;
+}
+#news-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.news-article {
+  width: 30%; /* Adjust the width as needed */
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-article img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}

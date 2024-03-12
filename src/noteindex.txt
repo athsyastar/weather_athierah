@@ -1,0 +1,151 @@
+html
+
+<div id="weather-container">
+      <h1 id="location"></h1>
+      
+      <div id="weather-data">
+          <p id="temperature">Temperature: </p>
+          <p id="humidity">Humidity: </p>
+          <p id="wind">Wind: </p>
+          <p id="uvIndex">UV Index: </p>
+      </div>
+  </div>
+
+
+  js
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const searchInput = document.querySelector('#locationInput');
+    const searchButton = document.querySelector('#fetchWeatherBtn');
+
+    searchButton.addEventListener('click', function () {
+        const location = searchInput.value;
+
+        if (location) {
+            fetchWeatherData(location);
+        } else {
+            alert('Please enter a location.');
+        }
+    });
+
+    const fetchWeatherData = async (location) => {
+        const apiKey = 'e24d599fb5d739efd4f8a45a0bc438e7'; // Replace with your actual API key
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            updateWeatherInfo(data);
+            updateMap([data.coord.lat, data.coord.lon]);
+        } catch (error) {
+            console.error('Error fetching weather data:', error);
+            alert('Error fetching weather data. Please try again.');
+        }
+    };
+
+    const updateWeatherInfo = (data) => {
+        const locationElement = document.getElementById('location');
+        const temperatureElement = document.getElementById('temperature');
+        const humidityElement = document.getElementById('humidity');
+        const windElement = document.getElementById('wind');
+        const uvIndexElement = document.getElementById('uvIndex');
+
+        locationElement.textContent = `${data.name}, ${data.sys.country}`;
+        temperatureElement.textContent = `${Math.round(data.main.temp)} °C`;
+        humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+        windElement.textContent = `Wind: ${data.wind.speed} m/s, ${getWindDirection(data.wind.deg)}`;
+        uvIndexElement.textContent = `UV Index: ${data.weather[0].id}`;
+    };
+    const time = new Date(data.dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
+
+    locationElement.textContent = `Weather in ${data.name}, ${data.sys.country}`;
+    locationDetailsElement.textContent = `Latitude: ${data.coord.lat}, Longitude: ${data.coord.lon}`;
+    temperatureElement.textContent = `Temperature: ${data.main.temp} °C`;
+    humidityElement.textContent = `Humidity: ${data.main.humidity}%`;
+    windElement.textContent = `Wind Speed: ${data.wind.speed} m/s, Direction: ${getWindDirection(data.wind.deg)}`;
+    uvIndexElement.textContent = `UV Index: ${data.weather[0].id}`;
+    timeElement.textContent = `Current Time: ${time}`;
+});
+
+    const updateMap = (coordinates) => {
+        const map = L.map('map').setView(coordinates, 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        L.marker(coordinates).addTo(map)
+            .bindPopup('Current Weather')
+            .openPopup();
+    };
+
+    // Helper function to get the wind direction
+    const getWindDirection = (degrees) => {
+        const directions = [
+            "North", "North-northeast", "Northeast", "East-northeast",
+            "East", "East-southeast", "Southeast", "South-southeast",
+            "South", "South-southwest", "Southwest", "West-southwest",
+            "West", "West-northwest", "Northwest", "North-northwest",
+        ];
+        return directions[Math.round(degrees / 22.5) % 16];
+    };
+
+css
+
+#weather-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#location {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#map {
+    margin-bottom: 20px;
+}
+
+#weather-data {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;<canvas id="hourlyTemperatureChart" width="400" height="200"></canvas>
+
+    color: #fff;
+}
+
+h1 {
+    color: #333;
+}
+
+
+fetch weather searchButton<div class="user-input">
+      <label for="locationInput">Enter Location:</label>
+      <input type="text" id="locationInput" placeholder="Search Weather....">
+      <button id="fetchWeatherBtn">Fetch Weather</button>
+    </div>
+
+
+
+
